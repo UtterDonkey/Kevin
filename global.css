@@ -1,0 +1,84 @@
+* {
+    color-scheme: dark;
+    font-family: sans-serif;
+}
+
+body {
+    animation: Seizure 0.01ms infinite;
+    display: flex;
+    flex-direction: column;
+
+}
+
+@keyframes Seizure {
+    0% {
+        background-color: black;
+    }
+
+    50% {
+        background-color: rgb(27, 27, 27);
+    }
+
+    100% {
+        background-color: black;
+    }
+}
+
+img#kevin {
+    max-width: 60vw;
+    width: 150px;
+    border-radius: 2rem;
+}
+
+img {
+    max-width: 100vw;
+    border-radius: 2rem;
+}
+
+button#start {
+    background: #197c00;
+    width: 5rem;
+    height: 2.5rem;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    text-align: center;
+    border: 2px solid white;
+    cursor: pointer;
+    animation: MrJohnstoneIsCool 2s ease-in-out infinite;
+}
+
+button.decision {
+    background: #5c5c5c;
+    border: none;
+    width: 15rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 2rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(0.8);
+}
+
+button:active {
+    filter: brightness(0.6);
+}
+
+@keyframes MrJohnstoneIsCool {
+    0% {
+        scale: 0.8;
+    }
+
+    50% {
+        scale: 1.1;
+        background: #24b400;
+    }
+
+    100% {
+        scale: 0.8;
+    }
+}
