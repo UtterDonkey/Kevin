@@ -46,11 +46,11 @@ const story = {
             "choices": [
                 {
                     "text": "Eat the crocodile",
-                    "scene": "Croc"
+                    "scene": "Dead"
                 },
                 {
                     "text": "Eat the fish",
-                    "scene": "Fish"
+                    "scene": "Dead"
                 }
             ]
 
@@ -62,16 +62,25 @@ const story = {
             "choices": [
                 {
                     "text": "Find firewood",
-                    "scene": "Firewood"
+                    "scene": "Dead"
                 },
                 {
                     "text": "Find food",
-                    "scene": "Food"
+                    "scene": "Dead"
                 }
             ]
 
         },
-    
+        {
+            "name": "Dead",
+            "content": `You died.`,
+            "image": "cave koala.jfif",
+            "choices": [
+                
+            ]
+
+        },
+
     ],
     "startScene": "Start"
 }
@@ -79,7 +88,7 @@ const story = {
 let currentScene = story.scenes[story.scenes.map(e => e.name).indexOf(story.startScene)];
 // Mr Johnstone is cool hehehehfdah
 function loadScene(scene) {
-    window.history.pushState(scene.name, '', '/' + scene.name);
+    window.history.pushState(scene.name, '', '/' + scene.name + '.html');
     document.querySelector('h1#header').innerText = story.name;
     document.querySelector('p#content').innerText = scene.content;
     document.querySelector('img#kevin').src = scene.image;
@@ -100,15 +109,18 @@ function loadScene(scene) {
 
     });
 }
+onpopstate = () => {
+    currentScene = story.scenes[story.scenes.map(e => e.name).indexOf(location.pathname.substring(1).replace('.html', ''))];
+    loadScene(currentScene);
+}
+if (location.hash) {
+    currentScene = story.scenes[story.scenes.map(e => e.name).indexOf(location.hash.substring(1).replace('.html', ''))];
+    loadScene(currentScene);
+}
 loadScene(currentScene);
 
-onpopstate = () =>{
-    loadScene(story.scenes[story.scenes.map(e => e.name).indexOf(location.pathname.substring(1))]);
-}
-if(location.hash)  {
-    loadScene(story.scenes[story.scenes.map(e => e.name).indexOf(location.hashF.substring(1))]);
-}
 
-async function downloadBing(){
+
+async function downloadBing() {
     return await (await fetch('https://bing.com')).text();
 }
